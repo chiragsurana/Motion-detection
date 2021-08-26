@@ -17,11 +17,11 @@ while cap.isOpened() :
     cv.drawContours(frame1 , contours , -1 , (0,255,0) , 2)
     for contour in contours:
         (x,y,w,h)=cv.boundingRect(contour)
-       # if cv.contourArea(contour)> 300:
-         #   cv.rectangle(frame1,(x,y),(x+w,y+h),(0,255,0),2)
+        if cv.contourArea(contour)>  100:
+            cv.rectangle(frame1,(x,y),(x+w,y+h),(0,255,0),2)
 
-    cv.putText(frame1,"camera:on",(0,10),5,1,(0,0,255),2)
-    #cv.putText(frame1,date,(0,100),5,1,(0,255,0),2)
+    cv.putText(frame1,"camera:on",(0,10),5,1,(0,0,255),2) #shows camera status
+    cv.putText(frame1,date,(0,100),5,1,(0,255,0),2) #shows date
     cv.imshow("feed",frame1)
     frame1=frame2
     ret,frame2 =cap.read()
